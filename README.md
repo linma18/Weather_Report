@@ -44,7 +44,7 @@ C compiler, general development tools installed, Python
   - Front-end design & implementation
   - Web server API design & implementation
   - Database layout
-- Lin Ma (https://github.com/lynnbgm)
+- Lin Ma (https://github.com/linma18)
   - Sensor simulation design & implementation
   - Sensor data display design & implementation
   - Application workflow architecture
