@@ -1,0 +1,28 @@
+<html>
+    <head>
+      {% if title %}
+      <title>{{ title }} - Mini-Project</title>
+      {% else %}
+      <title>Home - Mini-Project</title>
+      {% endif %}
+    </head>
+    <body>
+		<div>Mini-Project: <a href="{{ url_for('index') }}">Home</a></div>
+		<a href="{{ url_for('logout') }}">Logout</a>
+		<hr>
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+		<ul>
+			{% for message in messages %}
+			<li>{{ message }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+ 	<div id="footer">
+		Website by Ian Ballou and Lin Ma<br>
+		Inspiration for website:<br><a href=https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world>Miguel Grinberg's Flask Intro</a>
+	</div> 
+</html>

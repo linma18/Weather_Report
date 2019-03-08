@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/base.css') }}">
+    <div class="topnav">
+        <a class="active" href="{{ url_for('index') }}">Home</a>
+		<a href="{{ url_for('login') }}">Login</a>
+    </div>
+
+    <h1>User: {{ current_user.username }}</h1>
+	<div id="imgcontainer">
+		<section id="png">
+		</section>
+	</div>
+	<script type="text/javascript">
+	var pngcontainer = document.getElementById('png');
+
+	var files = {
+		'png': {{ current_user.temp_sensors }}
+	};
+
+	var files2 = {
+		'png': {{ current_user.humid_sensors }}
+	};
+
+	for (var pngext in files) {
+  		for (var j = 0; j < files[pngext]; j++) {
+    		var pngsrc = "static/images/tGraph" +
+				'{{ current_user.username }}' + (j) + "." + pngext;
+    		var pngimg = new Image();
+    		pngimg.src = pngsrc;
+   			pngcontainer.appendChild(pngimg);
+  		}
+	}	
+
+	for (var pngext in files2) {
+  		for (var j = 0; j < files2[pngext]; j++) {
+    		var pngsrc = "static/images/hGraph" +
+				"{{ current_user.username }}" + (j) + "." + pngext;
+    		var pngimg = new Image();
+    		pngimg.src = pngsrc;
+   			pngcontainer.appendChild(pngimg);
+  		}
+	}	
+	</script>
+	<!-- <img src="static/images/tGraph.png" alt="Temperature Graph"> -->
+	<!-- <img src="static/images/hGraph.png" alt="Humidity Graph"> -->
+{% endblock %}
